@@ -23,6 +23,8 @@ function __normalizeLocale(loc?: string) {
   return x.split(/[_-]/)[0] || '';
 }
 
+// Template directory resolution with locale priority:
+// 1) User locale 2) Global locale 3) EN fallback (base/<templateName>)
 function __templateDirFor(
   templateName: string,
   userLocale?: string,

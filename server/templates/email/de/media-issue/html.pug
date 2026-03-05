@@ -1,3 +1,4 @@
+//- Shared helper functions (labels/grammar/subjects); keep EN/DE parity
 include ../_helpers.pug
 doctype html
 head
@@ -21,12 +22,14 @@ div(style='display: block; background-color: #111827; padding: 2.5rem 0;')
   table(style='margin: 0 auto; font-family: Inter, Arial, sans-serif; color: #fff; font-size: 16px; width: 26rem;')
     tr
       td(style="text-align: center;")
+        //- Use clickable logo when applicationUrl is configured
         if applicationUrl
           a(href=applicationUrl style='margin: 0 1rem;')
             img(src=applicationUrl +'/logo_full.png' style='width: 26rem; image-rendering: crisp-edges; image-rendering: -webkit-optimize-contrast;')
         else
           div(style='margin: 0 1rem 2.5rem; font-size: 3em; font-weight: 700;')
             | #{applicationTitle}
+    //- Only show friendly greeting when name differs from email
     if recipientName !== recipientEmail
       tr
         td(style='text-align: center;')
@@ -37,6 +40,7 @@ div(style='display: block; background-color: #111827; padding: 2.5rem 0;')
         div(style='margin: 1rem 0 0; font-size: 1.25em;')
           - var __it = (typeof issueTypeName !== 'undefined' ? issueTypeName : '')
           - var __t = (typeof type !== 'undefined' ? type : '')
+          //- Body text varies by notificationType / notificationTypeKey
           - if (__t === 'ISSUE_CREATED')
             | Ein neues Problem wurde von #{__obfuscateUser(issueCreatedBy)} für #{__mediaLabelAcc()} #{mediaName} gemeldet:
           - else if (__t === 'ISSUE_COMMENT')
@@ -47,6 +51,7 @@ div(style='display: block; background-color: #111827; padding: 2.5rem 0;')
             | Das Problem bei #{__mediaLabelDat()} #{mediaName} wurde von #{__obfuscateUser(issueModifiedBy)} erneut geöffnet.
           - else
             | #{body}
+    //- Conditional section: show comment or description if available
     if issueComment
       tr
         td(style='text-align: center;')
@@ -57,6 +62,7 @@ div(style='display: block; background-color: #111827; padding: 2.5rem 0;')
         td(style='text-align: center;')
           div(style='margin: 1rem 0 0; font-size: 1.25em;')
             | #{issueDescription}
+    //- Action button is optional (links back to issue)
     if actionUrl
       tr
         td

@@ -3,6 +3,7 @@
 - const __kindReq = __isMovie ? "Movie Request" : "Series Request"
 - const __kindNew = __isMovie ? "New Movie Request" : "New Series Request"
 
+//- Select subject line based on notificationType
 case __nt
   when "MEDIA_PENDING"
     | #{__kindNew} - #{mediaName} [#{applicationTitle}]

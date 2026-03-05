@@ -1,3 +1,7 @@
+//- Shared helpers for email templates (EN reference).
+//- Keep variable names stable; localized templates should mirror structure.
+//- Functions are defined in JS blocks for use in subjects and bodies.
+//- ---------------------------------------------------------------------------
 - __mediaTypeKey = (typeof mediaTypeKey !== 'undefined' ? String(mediaTypeKey) : '')
 - __mediaTypeLower = (typeof mediaType !== 'undefined' ? String(mediaType).toLowerCase() : '')
 - __isMovie = (__mediaTypeKey === 'MOVIE') || (__mediaTypeLower === 'movie')

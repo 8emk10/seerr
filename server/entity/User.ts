@@ -248,6 +248,7 @@ export class User {
 
       const email = new PreparedEmail(getSettings().notifications.agents.email);
       await email.send({
+        // Selects localized email templates (User locale > Global locale > EN fallback)
         template: __userEmailTemplateDir('generatedpassword', this.settings?.locale, getSettings().main.locale),
         message: {
           to: this.email,
@@ -285,6 +286,7 @@ export class User {
       });
       const email = new PreparedEmail(getSettings().notifications.agents.email);
       await email.send({
+        // Selects localized email templates (User locale > Global locale > EN fallback)
         template: __userEmailTemplateDir('resetpassword', this.settings?.locale, getSettings().main.locale),
         message: {
           to: this.email,
