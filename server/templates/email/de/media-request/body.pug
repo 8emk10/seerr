@@ -12,7 +12,7 @@ case __nt
   when "MEDIA_DECLINED"
     | Eine Anfrage für #{__followingAcc()} #{__prefix4k}wurde abgelehnt:
   when "MEDIA_AVAILABLE"
-    | #{__followingAcc()} #{__prefix4k}ist jetzt verfügbar:
+    | #{__followingNom()} #{__prefix4k}ist jetzt verfügbar:
   when "MEDIA_FAILED"
     | Bei #{((typeof is4k !== "undefined" && is4k) ? (__isMovie ? "dem 4K Film" : "der 4K Serie") : __mediaLabelDat())} ist ein Fehler aufgetreten:
   default
